@@ -1,19 +1,16 @@
-import os
-import sys
-from fastapi import Request
+from fastapi import FastAPI
 
-# Add the backend directory to the sys.path so we can import open_webui
-current_dir = os.path.dirname(__file__)
-backend_dir = os.path.abspath(os.path.join(current_dir, '..', 'backend'))
-if backend_dir not in sys.path:
-    sys.path.append(backend_dir)
-
-from open_webui.main import app
+app = FastAPI()
 
 @app.get("/api/health")
-async def health_check():
-    return {"status": "ok", "message": "Backend is running on Vercel"}
+async def health():
+    return {"status": "ok", "source": "minimal_index"}
 
 @app.get("/api/ping")
 async def ping():
     return {"status": "pong"}
+
+@app.get("/api/config")
+async def mock_config():
+    # Return a minimal config to satisfy the frontend check
+    return {"status": True, "version": "0.0.1-minimal"}
