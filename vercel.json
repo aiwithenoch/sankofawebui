@@ -1,5 +1,39 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/svelte"
+    },
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxDuration": 60
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/ws/(.*)",
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/(?!api|ws)(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "sqlite:///:memory:",
+    "WEBUI_AUTH": "True",
+    "WEBUI_SECRET_KEY": "sankofa-secret-key-123",
+    "ENABLE_SIGNUP": "True",
+    "DEFAULT_USER_ROLE": "admin",
+    "WEBUI_NAME": "Sankofa WebUI",
+    "ENV": "prod"
+  }
 }
