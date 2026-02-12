@@ -16,7 +16,7 @@
     "WEBUI_SECRET_KEY": "sankofa-secret-key-123",
     "ENABLE_SIGNUP": "True",
     "DEFAULT_USER_ROLE": "admin",
-    "WEBUI_NAME": "Sankofa WebUI",
+    "WEBUI_NAME": "Sankofa WebUI Debug",
     "ENV": "prod"
   }
 }
