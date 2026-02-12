@@ -2,9 +2,6 @@
 	"name": "open-webui",
 	"version": "0.7.2",
 	"private": true,
-	"engines": {
-		"node": "20.x"
-	},
 	"scripts": {
 		"dev": "npm run pyodide:fetch && vite dev --host",
 		"dev:5050": "npm run pyodide:fetch && vite dev --port 5050",
@@ -26,6 +23,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "3.2.2",
+		"@sveltejs/adapter-vercel": "^5.0.0",
 		"@sveltejs/adapter-static": "^3.0.2",
 		"@sveltejs/kit": "^2.5.27",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
@@ -151,7 +149,7 @@
 		"yjs": "^13.6.27"
 	},
 	"engines": {
-		"node": ">=18.13.0 <=22.x.x",
+		"node": "20.x",
 		"npm": ">=6.0.0"
 	}
 }
